@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "name": "All Services"
+  },
+  {
+    "id": 1,
+    "name": "Trending services"
+  },
+  {
+    "id": 2,
+    "name": "Design Tools"
+  },
+  {
+    "id": 3,
+    "name": "Productivity Software"
+  },
+  {
+    "id": 4,
+    "name": "Learning & Courses"
+  },
+  {
+    "id": 5,
+    "name": "Development Services"
+  }
+]
