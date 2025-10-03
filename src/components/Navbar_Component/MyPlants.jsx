@@ -4,15 +4,17 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { AuthContext } from "../../provider/AuthProvider";
 import { GrFormView } from "react-icons/gr";
+import { CiEdit } from "react-icons/ci";
+import { MdDeleteForever } from "react-icons/md";
 
 const MyPlants = () => {
   const initialPlants = useLoaderData();
   const [plants, setPlants] = useState([]);
   const { user } = useContext(AuthContext);
 
+  // filter only the logged-in user's plants
   useEffect(() => {
     if (user) {
-      // Filter plants that match the logged-in user's email or name
       const myPlants = initialPlants.filter(
         (plant) =>
           plant.userEmail === user?.email || plant.userName === user?.displayName
@@ -20,6 +22,29 @@ const MyPlants = () => {
       setPlants(myPlants);
     }
   }, [initialPlants, user]);
+
+  // handle delete
+  const handleDelete = (_id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this plant?"
+    );
+    if (!confirmDelete) return;
+
+    fetch(`http://localhost:3000/plants/${_id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          alert("Plant deleted successfully!");
+          const remainingPlants = plants.filter((p) => p._id !== _id);
+          setPlants(remainingPlants);
+        } else {
+          alert("Failed to delete the plant.");
+        }
+      })
+      .catch(() => alert("Something went wrong while deleting!"));
+  };
 
   return (
     <div>
@@ -88,12 +113,25 @@ const MyPlants = () => {
                             </div>
                           </div>
                         </td>
-                        <td>
+                        <td className="flex gap-2">
                           <Link to={`/plant/${plant._id}`}>
                             <button className="btn bg-green-600 p-1 rounded text-white">
                               <GrFormView size={25} />
                             </button>
                           </Link>
+
+                          <Link to={`/updateplant/${plant._id}`}>
+                            <button className="btn bg-black p-1 rounded text-white">
+                              <CiEdit size={25} />
+                            </button>
+                          </Link>
+
+                          <button
+                            onClick={() => handleDelete(plant._id)}
+                            className="btn bg-red-600 p-1 rounded text-white"
+                          >
+                            <MdDeleteForever size={25} />
+                          </button>
                         </td>
                       </tr>
                     ))}
@@ -106,7 +144,7 @@ const MyPlants = () => {
       </main>
 
       {/* Footer */}
-      <footer className="w-11/12 mx-auto mt-25">
+      <footer className="w-11/12 mx-auto mt-10">
         <Footer />
       </footer>
     </div>
