@@ -6,7 +6,8 @@ import { GrFormView } from "react-icons/gr";
 
 const AllPlants = () => {
     const initialPlants = useLoaderData();
-    const [plants, setPlants] = useState(initialPlants);
+    const [plants] = useState(initialPlants);
+    // const [plants, setPlants] = useState(initialPlants);
     return (
         <div>
             {/* Navbar */}

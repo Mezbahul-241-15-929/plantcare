@@ -144,7 +144,7 @@ const MyPlants = () => {
       </main>
 
       {/* Footer */}
-      <footer className="w-11/12 mx-auto mt-10">
+      <footer className="w-11/12 mx-auto mt-25">
         <Footer />
       </footer>
     </div>

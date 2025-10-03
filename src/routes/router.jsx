@@ -14,6 +14,7 @@ import Add_Plant from "../components/Navbar_Component/Add_Plant";
 import AllPlants from "../components/Navbar_Component/AllPlants";
 import CoffeeDetails from "../components/Navbar_Component/CoffeeDetails";
 import MyPlants from "../components/Navbar_Component/MyPlants";
+import UpdatePlanet from "../components/Navbar_Component/UpdatePlanet";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
         loader: () => fetch("/news.json"),
         hydrateFallbackElement: <Loading></Loading>,
       },
+      
 
 
 
@@ -59,6 +61,11 @@ const router = createBrowserRouter([
   {
     path: "/addplant",
     Component: Add_Plant,
+  },
+  {
+    path: "/updateplant/:id",
+    loader: ({ params }) => fetch(`http://localhost:3000/plants/${params.id}`),
+    Component: UpdatePlanet,
   },
   {
     path: "/allplants",
