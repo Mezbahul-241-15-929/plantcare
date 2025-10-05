@@ -19,7 +19,9 @@ import UpdatePlanet from "../components/Navbar_Component/UpdatePlanet";
 const router = createBrowserRouter([
   {
     path: "/",
+loader: () => fetch("http://localhost:3000/plants"),
     element: <HomeLayout></HomeLayout>,
+    
     children: [
       {
         path: "",

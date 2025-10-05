@@ -7,6 +7,9 @@ import LeftAside from "../components/homelayout/LeftAside";
 import RighAside from "../components/homelayout/RighAside";
 import Carrosol from "../pages/Carrosol";
 import Footer from "../components/Footer";
+import NewPlant from "../components/HomeDesing/NewPlant";
+import ExtraSection from "../components/HomeDesing/ExtraSection";
+import ExtraSection2 from "../components/HomeDesing/ExtraSection2";
 
 const HomeLayout = () => {
   return (
@@ -23,6 +26,11 @@ const HomeLayout = () => {
       {/* carrosol */}
       <section className="w-11/12 mx-auto mb-6">
         <Carrosol></Carrosol>
+      </section>
+      <section>
+        <NewPlant></NewPlant>
+        <ExtraSection></ExtraSection>
+        <ExtraSection2></ExtraSection2>
       </section>
       {/* <main className="w-11/12 mx-auto my-3  grid grid-cols-12 gap-5">
         <aside className="col-span-12  md:col-span-3 md:sticky top-0 h-fit">
