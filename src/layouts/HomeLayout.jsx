@@ -21,9 +21,9 @@ const HomeLayout = () => {
         </nav>
       </header>
       {/* carrosol */}
-      {/* <section className="w-11/12 mx-auto mb-6">
+      <section className="w-11/12 mx-auto mb-6">
         <Carrosol></Carrosol>
-      </section> */}
+      </section>
       {/* <main className="w-11/12 mx-auto my-3  grid grid-cols-12 gap-5">
         <aside className="col-span-12  md:col-span-3 md:sticky top-0 h-fit">
           <LeftAside></LeftAside>
