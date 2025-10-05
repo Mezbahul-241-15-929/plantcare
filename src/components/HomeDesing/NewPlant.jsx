@@ -42,7 +42,7 @@ const NewPlant = () => {
                                 </p>
                                 <div className="mt-4">
                                     <Link
-                                        to={`/plant/${plant._id}`} // ✅ navigate to details page
+                                        to={`/plant/${plant._id}`}
                                         className="block text-center text-white bg-green-600 py-2 rounded-lg hover:bg-green-700 transition-colors"
                                     >
                                         View Details
