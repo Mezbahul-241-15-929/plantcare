@@ -59,7 +59,7 @@ const AllPlants = () => {
                                                 </div>
                                             </td>
                                             <td>
-                                                <Link >
+                                                <Link to={`/plant/${plant._id}`}>
                                                     <button className='btn bg-green-600 p-1 rounded text-white
                         '>< GrFormView size={25} /></button>
                                                 </Link>
