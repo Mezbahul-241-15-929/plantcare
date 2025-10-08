@@ -29,23 +29,23 @@ const Navbar = () => {
         <Link to="/" ><h1 className="text-2xl font-bold text-green-600">Plant Care</h1></Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex gap-5 text-accent">
-          <NavLink to="/" className="hover:text-primary">Home</NavLink>
-          <NavLink to="/allplants" className="hover:text-primary">All Plants</NavLink>
-          <NavLink to="/addplant" className="hover:text-primary">Add Plant</NavLink>
-          <NavLink to="/myplants" className="hover:text-primary">My Plants</NavLink>
+        <div className="hidden md:flex gap-5  font-bold text-green-600">
+          <NavLink to="/" className="hover:text-green-500">Home</NavLink>
+          <NavLink to="/allplants" className="hover:text-green-500">All Plants</NavLink>
+          <NavLink to="/addplant" className="hover:text-green-500">Add Plant</NavLink>
+          <NavLink to="/myplants" className="hover:text-green-500">My Plants</NavLink>
         </div>
 
         {/* User Info + Auth (Desktop) */}
         <div className="hidden md:flex gap-5 items-center">
-          <div>{user && user.displayName}</div>
+          <div className="text-green-600">{user && user.displayName}</div>
           <img
             className="w-10 h-10 rounded-full object-cover"
             src={user ? user.photoURL : userIcon}
             alt="user"
           />
           {user ? (
-            <button onClick={handleLogOut} className="btn btn-primary  px-6 bg-green-600 text-white border-none">
+            <button onClick={handleLogOut} className="btn btn-primary  px-6 bg-green-600 hover:bg-green-500 text-white border-none">
               LogOut
             </button>
           ) : (
@@ -86,7 +86,7 @@ const Navbar = () => {
                   handleLogOut();
                   setIsOpen(false);
                 }}
-                className="btn btn-primary w-full"
+                className="btn btn-primary w-full "
               >
                 LogOut
               </button>

@@ -10,7 +10,7 @@ const PageNotfound = () => {
 
         <div className='mt-5 rounded'>
           <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center px-6">
-          <h1 className="text-9xl font-extrabold text-indigo-600">404</h1>
+          <h1 className="text-9xl font-extrabold text-green-600">404</h1>
           <h2 className="mt-4 text-3xl font-semibold text-gray-800">Page Not Found</h2>
           <p className="mt-2 text-gray-500 text-lg">
             Sorry, the page you are looking for doesn’t exist or has been moved.
@@ -18,7 +18,7 @@ const PageNotfound = () => {
 
           <Link
             to="/"
-            className="mt-6 px-6 py-3 text-white bg-indigo-600 rounded-2xl shadow-md hover:bg-indigo-700 transition duration-300"
+            className="mt-6 px-6 py-3 text-white bg-green-600 rounded-2xl shadow-md hover:bg-green-500 transition duration-300"
           >
             Back to Home
           </Link>

@@ -86,6 +86,10 @@ const router = createBrowserRouter([
     loader: () => fetch("http://localhost:3000/plants"),
     Component: MyPlants
   },
+    {
+    path: "/*",
+    element: <PageNotfound></PageNotfound>,
+  },
 
   // {
   //   path: "/news-details/:id",
@@ -97,10 +101,7 @@ const router = createBrowserRouter([
   //   loader: () => fetch("/news.json"),
   //   hydrateFallbackElement: <Loading></Loading>,
   // },
-  // {
-  //   path: "/*",
-  //   element: <PageNotfound></PageNotfound>,
-  // },
+
 ]);
 
 export default router;

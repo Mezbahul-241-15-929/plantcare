@@ -56,7 +56,7 @@ const MyPlants = () => {
       <main className="w-11/12 mx-auto">
         {!user ? (
           // User not logged in
-          <div className="text-center mt-10">
+          <div className="text-center mt-20">
             <h2 className="text-2xl font-bold mb-4">You are not logged in!</h2>
             <p className="mb-6 text-gray-600">
               Please log in to view your plants.
