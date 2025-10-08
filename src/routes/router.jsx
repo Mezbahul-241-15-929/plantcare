@@ -15,7 +15,7 @@ import UpdatePlanet from "../components/Navbar_Component/UpdatePlanet";
 const router = createBrowserRouter([
   {
     path: "/",
-    loader: () => fetch("http://localhost:3000/plants"),
+    loader: () => fetch("https://plantcare-server-lc9w.vercel.app/plants"),
     hydrateFallbackElement: <Loading></Loading>,
     element: <HomeLayout></HomeLayout>,
 
@@ -48,27 +48,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/updateplant/:id",
-    loader: ({ params }) => fetch(`http://localhost:3000/plants/${params.id}`),
+    loader: ({ params }) => fetch(`https://plantcare-server-lc9w.vercel.app/plants/${params.id}`),
     hydrateFallbackElement: <Loading></Loading>,
     Component: UpdatePlanet,
   },
   {
     path: "/allplants",
-    loader: () => fetch('http://localhost:3000/plants'),
+    loader: () => fetch('https://plantcare-server-lc9w.vercel.app/plants'),
     hydrateFallbackElement: <Loading></Loading>,
     Component: AllPlants,
   },
 
   {
     path: '/plant/:id',
-    loader: ({ params }) => fetch(`http://localhost:3000/plants/${params.id}`),
+    loader: ({ params }) => fetch(`https://plantcare-server-lc9w.vercel.app/plants/${params.id}`),
     hydrateFallbackElement: <Loading></Loading>,
     Component: CoffeeDetails
   },
 
   {
     path: "/myplants",
-    loader: () => fetch("http://localhost:3000/plants"),
+    loader: () => fetch("https://plantcare-server-lc9w.vercel.app/plants"),
     hydrateFallbackElement: <Loading></Loading>,
     Component: MyPlants
   },

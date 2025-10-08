@@ -40,7 +40,7 @@ const Add_Plant = () => {
 
     //console.log("Plant Data Submitted:", plantData);
 
-    fetch("http://localhost:3000/plants", {
+    fetch("https://plantcare-server-lc9w.vercel.app/plants", {
       method: "POST",
       headers: {
         "content-type": "application/json",

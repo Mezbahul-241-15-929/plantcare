@@ -27,7 +27,7 @@ const UpdatePlant = () => {
     const formData = new FormData(form);
     const updatedPlant = Object.fromEntries(formData.entries());
 
-    fetch(`http://localhost:3000/plants/${_id}`, {
+    fetch(`https://plantcare-server-lc9w.vercel.app/plants/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

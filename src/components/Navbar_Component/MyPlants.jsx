@@ -36,7 +36,7 @@ const MyPlants = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/plants/${_id}`, {
+        fetch(`https://plantcare-server-lc9w.vercel.app/plants/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
