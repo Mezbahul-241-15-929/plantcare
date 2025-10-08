@@ -3,9 +3,7 @@ import { useLoaderData, Link } from "react-router";
 
 const NewPlant = () => {
     const plants = useLoaderData();
-    console.log(plants);
 
-    
     const topPlants = Array.isArray(plants)
         ? plants
               .slice()

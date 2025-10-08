@@ -20,7 +20,7 @@ const UpdatePlant = () => {
     userName,
   } = useLoaderData();
 
-  // ✅ handle update with SweetAlert2
+  // handle update with SweetAlert2
   const handleUpdatePlant = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -37,7 +37,7 @@ const UpdatePlant = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
-          // ✅ SweetAlert success popup
+          // SweetAlert success popup
           Swal.fire({
             title: "Updated!",
             text: "Plant updated successfully!",

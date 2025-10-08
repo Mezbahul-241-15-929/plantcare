@@ -24,7 +24,7 @@ const MyPlants = () => {
     }
   }, [initialPlants, user]);
 
-  // ✅ handle delete with SweetAlert2
+  //  handle delete with SweetAlert2
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -42,7 +42,7 @@ const MyPlants = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
-              // ✅ Success Alert
+              //  Success Alert
               Swal.fire({
                 title: "Deleted!",
                 text: "Your plant has been deleted.",

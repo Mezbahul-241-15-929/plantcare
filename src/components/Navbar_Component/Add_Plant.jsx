@@ -38,7 +38,7 @@ const Add_Plant = () => {
       createdAt: new Date().toISOString(), 
     };
 
-    console.log("Plant Data Submitted:", plantData);
+    //console.log("Plant Data Submitted:", plantData);
 
     fetch("http://localhost:3000/plants", {
       method: "POST",

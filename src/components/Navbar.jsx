@@ -3,16 +3,15 @@ import { Link, NavLink } from "react-router";
 import { HiMenu, HiX } from "react-icons/hi"; 
 import userIcon from "../assets/user.png";
 import { AuthContext } from "../provider/AuthProvider";
-import Swal from "sweetalert2"; // Uncomment this line if SweetAlert2 is installed
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogOut = () => {
-    //console.log("user trying to LogOut");
+    
 
-    //SweetAlert confirmation before logout
     Swal.fire({
       title: "Are you sure?",
       text: "You will be logged out of your account.",
