@@ -113,25 +113,34 @@ const MyPlants = () => {
                             </div>
                           </div>
                         </td>
-                        <td className="flex gap-2">
-                          <Link to={`/plant/${plant._id}`}>
-                            <button className="btn bg-green-600 p-1 rounded text-white">
-                              <GrFormView size={25} />
+                        <td className="grid gap-2">
+                          <div>
+                            <Link to={`/plant/${plant._id}`}>
+                              <button className="btn bg-green-600 p-1 rounded text-white">
+                                <GrFormView size={25} />
+                              </button>
+                            </Link>
+                          </div>
+                          <div>
+                            <Link to={`/updateplant/${plant._id}`}>
+                              <button className="btn bg-black p-1 rounded text-white">
+                                <CiEdit size={25} />
+                              </button>
+                            </Link>
+                          </div>
+                          <div>
+                            <button
+                              onClick={() => handleDelete(plant._id)}
+                              className="btn bg-red-600 p-1 rounded text-white"
+                            >
+                              <MdDeleteForever size={25} />
                             </button>
-                          </Link>
+                          </div>
 
-                          <Link to={`/updateplant/${plant._id}`}>
-                            <button className="btn bg-black p-1 rounded text-white">
-                              <CiEdit size={25} />
-                            </button>
-                          </Link>
 
-                          <button
-                            onClick={() => handleDelete(plant._id)}
-                            className="btn bg-red-600 p-1 rounded text-white"
-                          >
-                            <MdDeleteForever size={25} />
-                          </button>
+
+
+
                         </td>
                       </tr>
                     ))}
