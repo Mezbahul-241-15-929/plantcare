@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from "react-router";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 const Add_Plant = () => {
   const { user } = useContext(AuthContext);
@@ -35,7 +35,7 @@ const Add_Plant = () => {
     // Add current timestamp before sending to MongoDB
     const plantData = {
       ...formData,
-      createdAt: new Date().toISOString(), // <-- added time
+      createdAt: new Date().toISOString(), 
     };
 
     console.log("Plant Data Submitted:", plantData);
@@ -50,17 +50,15 @@ const Add_Plant = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          // ✅ SweetAlert version:
-          // Swal.fire({
-          //   title: "Plant Added Successfully!",
-          //   text: "Your plant has been added to the collection.",
-          //   icon: "success",
-          //   confirmButtonColor: "#22c55e",
-          //   timer: 2000,
-          //   showConfirmButton: false,
-          // });
-
-          alert("Plant added successfully!"); // fallback alert
+          
+          Swal.fire({
+            title: "Plant Added Successfully!",
+            text: "Your plant has been added to the collection.",
+            icon: "success",
+            confirmButtonColor: "#22c55e",
+            timer: 2000,
+            showConfirmButton: false,
+          });
 
           // Reset form after submission
           setFormData({
@@ -81,15 +79,13 @@ const Add_Plant = () => {
       .catch((err) => {
         console.error("Error adding plant:", err);
 
-        // ❌ SweetAlert error version:
-        // Swal.fire({
-        //   title: "Error!",
-        //   text: "Something went wrong while adding your plant.",
-        //   icon: "error",
-        //   confirmButtonColor: "#ef4444",
-        // });
+        Swal.fire({
+          title: "Error!",
+          text: "Something went wrong while adding your plant.",
+          icon: "error",
+          confirmButtonColor: "#ef4444",
+        });
 
-        alert("Something went wrong while adding the plant!");
       });
   };
 

@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 import { HiMenu, HiX } from "react-icons/hi"; 
 import userIcon from "../assets/user.png";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2"; // Uncomment this line if SweetAlert2 is installed
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -10,26 +11,44 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     //console.log("user trying to LogOut");
-    logOut()
-      .then(() => {
-        //alert("You Logged Out successfully");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+    //SweetAlert confirmation before logout
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out of your account.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#16a34a",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Log Out",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOut()
+          .then(() => {
+            Swal.fire({
+              title: "Logged Out!",
+              text: "You have successfully logged out.",
+              icon: "success",
+              confirmButtonColor: "#16a34a",
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
   };
 
   return (
     <nav className="bg-white shadow rounded-xl px-4 py-3 border-y-2 border-green-500 ">
-      {/* <nav className="bg-white shadow rounded-xl px-4 py-3 border-y-2 border-green-500 fixed top-0 left-0 right-0 z-50"> */}
-
       <div className="flex justify-between items-center">
         {/* Logo */}
-        
-        <Link to="/" ><h1 className="text-2xl font-bold text-green-600">Plant Care</h1></Link>
+        <Link to="/">
+          <h1 className="text-2xl font-bold text-green-600">Plant Care</h1>
+        </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex gap-5  font-bold text-green-600">
+        <div className="hidden md:flex gap-5 font-bold text-green-600">
           <NavLink to="/" className="hover:text-green-500">Home</NavLink>
           <NavLink to="/allplants" className="hover:text-green-500">All Plants</NavLink>
           <NavLink to="/addplant" className="hover:text-green-500">Add Plant</NavLink>
@@ -45,21 +64,24 @@ const Navbar = () => {
             alt="user"
           />
           {user ? (
-            <button onClick={handleLogOut} className="btn btn-primary  px-6 bg-green-600 hover:bg-green-500 text-white border-none">
+            <button
+              onClick={handleLogOut}
+              className="btn btn-primary px-6 bg-green-600 hover:bg-green-500 text-white border-none"
+            >
               LogOut
             </button>
           ) : (
-            <Link to="/auth/login" className="btn btn-primary round px-6 bg-green-600 text-white border-none">
+            <Link
+              to="/auth/login"
+              className="btn btn-primary round px-6 bg-green-600 text-white border-none"
+            >
               Login
             </Link>
           )}
         </div>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
         </button>
       </div>
@@ -71,7 +93,6 @@ const Navbar = () => {
           <NavLink to="/allplants" className="hover:text-primary">All Plants</NavLink>
           <NavLink to="/addplant" className="hover:text-primary">Add Plant</NavLink>
           <NavLink to="/myplants" className="hover:text-primary">My Plants</NavLink>
-
 
           <div className="flex flex-col gap-3 mt-3">
             <div>{user && user.email}</div>
@@ -86,7 +107,7 @@ const Navbar = () => {
                   handleLogOut();
                   setIsOpen(false);
                 }}
-                className="btn btn-primary w-full "
+                className="btn btn-primary w-full"
               >
                 LogOut
               </button>

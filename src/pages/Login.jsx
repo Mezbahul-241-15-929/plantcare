@@ -1,12 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [error, setError] = useState("");
   const { signIn, signInWithGoogle } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -16,20 +18,48 @@ const Login = () => {
 
     signIn(email, password)
       .then((result) => {
+        Swal.fire({
+          title: "Welcome Back!",
+          text: "You have logged in successfully!",
+          icon: "success",
+          confirmButtonColor: "#3085d6",
+          timer: 1500,
+          showConfirmButton: false,
+        });
         navigate(location.state ? location.state : "/");
       })
       .catch((error) => {
         setError(error.code);
+        Swal.fire({
+          title: "Login Failed!",
+          text: error.message,
+          icon: "error",
+          confirmButtonColor: "#d33",
+        });
       });
   };
 
   const handleGoogleLogin = () => {
     signInWithGoogle()
       .then((result) => {
+        Swal.fire({
+          title: "Welcome!",
+          text: "Logged in with Google successfully!",
+          icon: "success",
+          confirmButtonColor: "#3085d6",
+          timer: 1500,
+          showConfirmButton: false,
+        });
         navigate(location.state ? location.state : "/");
       })
       .catch((error) => {
         setError(error.code);
+        Swal.fire({
+          title: "Google Login Failed!",
+          text: error.message,
+          icon: "error",
+          confirmButtonColor: "#d33",
+        });
       });
   };
 
@@ -39,6 +69,7 @@ const Login = () => {
         <h2 className="font-semibold text-2xl text-center">
           Login your account
         </h2>
+
         <form onSubmit={handleLogin} className="card-body">
           <fieldset className="fieldset">
             <label className="label">Email</label>

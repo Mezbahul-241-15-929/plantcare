@@ -6,6 +6,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { GrFormView } from "react-icons/gr";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
+import Swal from "sweetalert2"; 
 
 const MyPlants = () => {
   const initialPlants = useLoaderData();
@@ -23,27 +24,51 @@ const MyPlants = () => {
     }
   }, [initialPlants, user]);
 
-  // handle delete
+  // ✅ handle delete with SweetAlert2
   const handleDelete = (_id) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this plant?"
-    );
-    if (!confirmDelete) return;
-
-    fetch(`http://localhost:3000/plants/${_id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount) {
-          alert("Plant deleted successfully!");
-          const remainingPlants = plants.filter((p) => p._id !== _id);
-          setPlants(remainingPlants);
-        } else {
-          alert("Failed to delete the plant.");
-        }
-      })
-      .catch(() => alert("Something went wrong while deleting!"));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/plants/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              // ✅ Success Alert
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your plant has been deleted.",
+                icon: "success",
+                timer: 1500,
+                showConfirmButton: false,
+              });
+              const remainingPlants = plants.filter((p) => p._id !== _id);
+              setPlants(remainingPlants);
+            } else {
+              Swal.fire({
+                title: "Failed!",
+                text: "Could not delete the plant.",
+                icon: "error",
+              });
+            }
+          })
+          .catch(() =>
+            Swal.fire({
+              title: "Error!",
+              text: "Something went wrong while deleting.",
+              icon: "error",
+            })
+          );
+      }
+    });
   };
 
   return (
@@ -136,11 +161,6 @@ const MyPlants = () => {
                               <MdDeleteForever size={25} />
                             </button>
                           </div>
-
-
-
-
-
                         </td>
                       </tr>
                     ))}

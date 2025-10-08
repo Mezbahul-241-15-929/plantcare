@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import Swal from "sweetalert2"; // ✅ Import SweetAlert2
 
 const UpdatePlant = () => {
   const {
@@ -19,13 +20,12 @@ const UpdatePlant = () => {
     userName,
   } = useLoaderData();
 
+  // ✅ handle update with SweetAlert2
   const handleUpdatePlant = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const updatedPlant = Object.fromEntries(formData.entries());
-
-    console.log(updatedPlant);
 
     fetch(`http://localhost:3000/plants/${_id}`, {
       method: "PUT",
@@ -37,9 +37,32 @@ const UpdatePlant = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
-          alert("Plant updated successfully!");
+          // ✅ SweetAlert success popup
+          Swal.fire({
+            title: "Updated!",
+            text: "Plant updated successfully!",
+            icon: "success",
+            confirmButtonColor: "#3085d6",
+            timer: 1500,
+            showConfirmButton: false,
+          });
+        } else {
+          Swal.fire({
+            title: "No Changes!",
+            text: "No updates were made.",
+            icon: "info",
+            confirmButtonColor: "#3085d6",
+          });
         }
-      });
+      })
+      .catch(() =>
+        Swal.fire({
+          title: "Error!",
+          text: "Something went wrong while updating the plant.",
+          icon: "error",
+          confirmButtonColor: "#d33",
+        })
+      );
   };
 
   return (
@@ -208,7 +231,7 @@ const UpdatePlant = () => {
       </main>
 
       {/* Footer */}
-      <footer className="mt-5">
+      <footer className="mt-20">
         <Footer />
       </footer>
     </div>
