@@ -1,15 +1,11 @@
 import { createBrowserRouter } from "react-router";
 import HomeLayout from "../layouts/HomeLayout";
-import CategoryNews from "../pages/CategoryNews";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AuthLayout from "../layouts/AuthLayout";
-import NewsDetails from "../pages/NewsDetails";
-import PrivateRoute from "../provider/PrivateRoute";
 import Loading from "../pages/Loading";
 import PageNotfound from "../pages/PageNotfound";
-import AboutMe from "../pages/Aboutme";
 import Add_Plant from "../components/Navbar_Component/Add_Plant";
 import AllPlants from "../components/Navbar_Component/AllPlants";
 import CoffeeDetails from "../components/Navbar_Component/CoffeeDetails";
@@ -45,10 +41,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/about",
-    element: <AboutMe></AboutMe>,
-  },
+  
   {
     path: "/addplant",
     Component: Add_Plant,
@@ -83,17 +76,6 @@ const router = createBrowserRouter([
     path: "/*",
     element: <PageNotfound></PageNotfound>,
   },
-
-  // {
-  //   path: "/news-details/:id",
-  //   element: (
-  //     <PrivateRoute>
-  //       <NewsDetails></NewsDetails>
-  //     </PrivateRoute>
-  //   ),
-  //   loader: () => fetch("/news.json"),
-  //   hydrateFallbackElement: <Loading></Loading>,
-  // },
 
 ]);
 

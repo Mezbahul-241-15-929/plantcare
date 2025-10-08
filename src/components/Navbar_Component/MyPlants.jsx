@@ -115,9 +115,9 @@ const MyPlants = () => {
                   </thead>
                   <tbody>
                     {plants.map((plant, index) => (
-                      <tr key={plant._id}>
-                        <th>{index + 1}</th>
-                        <td>
+                      <tr key={plant._id} className="">
+                        <th className="">{index + 1}</th>
+                        <td className="">
                           <div className="flex items-center gap-3">
                             <div className="avatar">
                               <div className="mask mask-squircle h-12 w-12">
