@@ -19,5 +19,5 @@
   font-family: "Poppins", sans-serif;
 }
 a.active {
-  @apply bg-base-300;
+  @apply border-b-2 border-green-600;
 }

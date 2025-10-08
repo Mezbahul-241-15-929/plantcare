@@ -2,7 +2,7 @@ import React from 'react';
 
 const Carrosol = () => {
     return (
-        <div className="carousel w-full rounded">
+        <div className="carousel w-full rounded-xl border border-green-500">
             <div id="slide1" className="carousel-item relative w-full">
                 <img
                     src="https://i.ibb.co/wZRgGdyZ/Artboard-3.png"

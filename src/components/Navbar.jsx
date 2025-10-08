@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         {/* Logo */}
         
-        <NavLink to="/" ><h1 className="text-2xl font-bold text-green-600">Plant Care</h1></NavLink>
+        <Link to="/" ><h1 className="text-2xl font-bold text-green-600">Plant Care</h1></Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-5 text-accent">
