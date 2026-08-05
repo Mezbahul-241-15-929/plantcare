@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="mt-10 w-11/12 mx-auto fixed bottom-0 border-t-3 border-green-500 footer sm:footer-horizontal bg-white text-black shadow rounded-xl items-center p-4">
-            <aside className="grid-flow-col items-center">
+        <footer className="footer mt-10 w-11/12 mx-auto flex flex-col gap-4 overflow-visible rounded-xl border-t-3 border-green-500 bg-white p-4 text-black shadow sm:flex-row sm:items-center sm:justify-between">
+            <aside className="flex items-center gap-2 text-center">
                 <svg
                     width="36"
                     height="36"
@@ -17,7 +17,7 @@ const Footer = () => {
                 </svg>
                 <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
             </aside>
-            <nav className=" grid-flow-col gap-4 md:place-self-center md:justify-self-end ">
+            <nav className="flex gap-4 sm:justify-self-end">
                 <a href="https://twitter.com" target="_blank">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

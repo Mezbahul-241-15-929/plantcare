@@ -12,7 +12,7 @@ const NewPlant = () => {
         : [];
 
     return (
-        <div className="w-11/12 mx-auto my-30">
+        <div className="my-8 w-11/12 mx-auto sm:my-10 md:my-12 lg:my-16">
             <h1 className="text-4xl font-bold text-center mb-10">🌿 New Plants</h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
